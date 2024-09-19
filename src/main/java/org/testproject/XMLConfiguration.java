@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class XMLConfiguration {
     public static void main(String[] args) {
+        @SuppressWarnings("resource")
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         Alien al = (Alien) context.getBean("alien");
         al.code();
