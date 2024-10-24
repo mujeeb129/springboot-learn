@@ -1,18 +1,19 @@
 package org.testproject;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.testproject.config.AppConfig;
+import javax.accessibility.AccessibleBundle;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+
+@SpringBootApplication
 public class JavaBasedConfiguration {
     public static void main(String[] args) {
-        @SuppressWarnings("resource")
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        Alien ob = context.getBean(Alien.class);
-        System.out.println(ob.getAge());
-        ob.code();
+        ApplicationContext context = SpringApplication.run(JavaBasedConfiguration.class);
 
-        /* for testing scope - change scope in AppConfig.class */
-//        Alien ob2 = (Alien) context.getBean("comp2");
+        Alien ob = (Alien) context.getBean(Alien.class);
+
+        ob.code();
     }
 }
